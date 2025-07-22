@@ -9,7 +9,6 @@ import AdminDashboard from "./pages/admin-view/dashboard.jsx";
 import AdminFeatures from "./pages/admin-view/features.jsx";
 import PageNotFound from "./not_found/index.jsx";
 import CheckAuth from "./components/common/check-auth.jsx";
-import unauth from "./pages/unauth-page/unauth.jsx";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -17,6 +16,7 @@ import { checkAuth } from "./store/auth-slice/index.js";
 import ShoppingOrderReturn from "./pages/shopping-view/OrderReturn.jsx";
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess.jsx";
 import SearchProducts from "./pages/shopping-view/search.jsx";
+import Unauth from "./pages/unauth-page/unauth.jsx";
 const AdminOrder = lazy(() => import("./pages/admin-view/orders.jsx"));
 const AdminProducts = lazy(() => import("./pages/admin-view/products.jsx"));
 const ShopLayout = lazy(() => import("./components/shopping-view/Layout.jsx"));
@@ -193,7 +193,7 @@ function App() {
           />
         </Route>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/unauth-page" element={<unauth />} />
+        <Route path="/unauth-page" element={<Unauth />} />
       </Routes>
     </div>
   );
