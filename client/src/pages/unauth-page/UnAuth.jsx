@@ -1,4 +1,4 @@
-function UnAuth() {
+function unauth() {
   return <div className="text-white bg-black">This page is unaccessable!</div>;
 }
-export default UnAuth;
+export default unauth;

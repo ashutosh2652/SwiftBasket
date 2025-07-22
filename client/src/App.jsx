@@ -9,7 +9,7 @@ import AdminDashboard from "./pages/admin-view/dashboard.jsx";
 import AdminFeatures from "./pages/admin-view/features.jsx";
 import PageNotFound from "./not_found/index.jsx";
 import CheckAuth from "./components/common/check-auth.jsx";
-import UnAuth from "./pages/unauth-page/unauth.jsx";
+import unauth from "./pages/unauth-page/unauth.jsx";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -193,7 +193,7 @@ function App() {
           />
         </Route>
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/unauth-page" element={<UnAuth />} />
+        <Route path="/unauth-page" element={<unauth />} />
       </Routes>
     </div>
   );
