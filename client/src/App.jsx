@@ -31,8 +31,9 @@ const Register = lazy(() => import("./pages/auth/Register.jsx"));
 
 function App() {
   const dispatch = useDispatch();
+  const token = JSON.parse(sessionStorage.getItem("token"));
   useEffect(() => {
-    dispatch(checkAuth());
+    dispatch(checkAuth(token));
   }, [dispatch]);
   const { isAuthenticated, user, isLoading } = useSelector(
     (state) => state.auth

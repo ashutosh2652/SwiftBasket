@@ -5,6 +5,7 @@ const initialState = {
   isAuthenticated: false,
   isLoading: true,
   user: null,
+  token: null,
 };
 export const registerUser = createAsyncThunk(
   "/auth/register",
@@ -44,13 +45,14 @@ export const loginUser = createAsyncThunk(
 );
 export const checkAuth = createAsyncThunk(
   "/auth/checkauth",
-  async (_, { rejectWithValue }) => {
+  async (token, { rejectWithValue }) => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/auth/check-auth`,
         {
           withCredentials: true,
           headers: {
+            Authorization: `Bearer ${token}`,
             "Cache-Control":
               "no-store, no-cache, must-revalidate, proxy-revalidate,",
           },
@@ -104,11 +106,10 @@ const authSlice = createSlice({
         toast.dismiss("register-loading");
         toast.success("Account created Successfully!");
       })
-      .addCase(registerUser.rejected, (state, action) => {
+      .addCase(registerUser.rejected, (state) => {
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
-        console.log(action.payload);
         toast.dismiss("register-loading");
       })
       .addCase(loginUser.pending, (state) => {
@@ -119,16 +120,17 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        console.log("action", action.payload);
         state.user = action?.payload?.success ? action?.payload?.user : null;
         state.isAuthenticated = action?.payload?.success;
+        state.token = action.payload.token;
+        sessionStorage.setItem("token", JSON.stringify(action.payload.token));
         toast.dismiss("logging-loading");
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(loginUser.rejected, (state) => {
         state.isLoading = false;
         state.isAuthenticated = false;
         state.user = null;
-        console.log("action", action.payload);
+        state.token = null;
         toast.dismiss("logging-loading");
       })
       .addCase(checkAuth.pending, (state) => {
@@ -139,8 +141,6 @@ const authSlice = createSlice({
       })
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isLoading = false;
-        // console.log("Checkauth-fullfield", action.payload);
-
         state.user = action?.payload?.success ? action?.payload?.user : null;
         state.isAuthenticated = action?.payload?.success;
         toast.dismiss("checkauth-loading");
@@ -156,6 +156,7 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.user = null;
         state.isAuthenticated = false;
+        state.token = null;
       });
   },
 });

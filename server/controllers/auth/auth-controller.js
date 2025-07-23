@@ -4,16 +4,12 @@ import bcrypt from "bcryptjs";
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    // const totalUser = await User.findOne({});
-    // console.log(totalUser);
-
     const checkUser = await User.findOne({ email: email });
     if (!checkUser)
       return res
         .status(400)
         .json({ success: false, message: "Provided EmailId doesn't exist." });
     const checkPassword = await bcrypt.compare(password, checkUser.password);
-    // console.log("email", checkPassword);
     if (!checkPassword)
       return res
         .status(400)
@@ -28,7 +24,7 @@ const loginUser = async (req, res) => {
       "CLIENT_SECRET_KEY",
       { expiresIn: "60m" }
     );
-    return res.cookie("token", token, { httpOnly: true, secure: false }).json({
+    return res.cookie("token", token, { httpOnly: true, secure: true }).json({
       success: true,
       message: "Logged in successfully",
       user: {
@@ -37,6 +33,7 @@ const loginUser = async (req, res) => {
         id: checkUser._id,
         userName: checkUser.userName,
       },
+      token: token,
     });
   } catch (error) {
     console.log(error);
@@ -85,9 +82,9 @@ const logoutUser = async (req, res) => {
   return res.json({ success: true, message: "Logged Out Successfully!" });
 };
 const authMiddleware = async (req, res, next) => {
-  const token = req?.cookies?.token;
-  // console.log(token);
-
+  const cookietoken = req?.cookies?.token;
+  const sessiontoken = req?.headers["authorization"]?.split(" ")[1];
+  const token = cookietoken ? cookietoken : sessiontoken;
   if (!token)
     return res
       .status(401)
