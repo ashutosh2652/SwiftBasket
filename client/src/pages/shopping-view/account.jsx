@@ -1,5 +1,5 @@
 import { TabsTrigger } from "@radix-ui/react-tabs";
-import accountImage from "../../assets/AccountImage.jpg";
+import accountImage from "../../assets/accountImage.jpg";
 import { Tabs, TabsContent, TabsList } from "../../components/ui/tabs";
 import Address from "../../components/shopping-view/address";
 import ShoppingOrders from "../../components/shopping-view/Orders";
