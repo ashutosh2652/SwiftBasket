@@ -16,7 +16,7 @@ import { checkAuth } from "./store/auth-slice/index.js";
 import ShoppingOrderReturn from "./pages/shopping-view/OrderReturn.jsx";
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess.jsx";
 import SearchProducts from "./pages/shopping-view/search.jsx";
-import UnauthPage from "./pages/unauth-page/unauth.jsx";
+import UnauthPage from "./pages/unauth-page/Unauth.jsx";
 const AdminOrder = lazy(() => import("./pages/admin-view/orders.jsx"));
 const AdminProducts = lazy(() => import("./pages/admin-view/products.jsx"));
 const ShopLayout = lazy(() => import("./components/shopping-view/Layout.jsx"));
