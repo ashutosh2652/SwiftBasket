@@ -1,5 +1,5 @@
 import { TabsTrigger } from "@radix-ui/react-tabs";
-import AccountImage from "../../assets/AccountImage.jpg";
+import accountImage from "../../assets/AccountImage.jpg";
 import { Tabs, TabsContent, TabsList } from "../../components/ui/tabs";
 import Address from "../../components/shopping-view/address";
 import ShoppingOrders from "../../components/shopping-view/Orders";
@@ -8,7 +8,7 @@ function UserAccount() {
     <div className="flex flex-col">
       <div className="relative w-full h-[300px]">
         <img
-          src={AccountImage}
+          src={accountImage}
           className="h-full w-full object-cover object-center"
         />
       </div>
