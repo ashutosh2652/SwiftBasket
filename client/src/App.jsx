@@ -39,11 +39,10 @@ function App() {
   );
   if (isLoading)
     return (
-      <div className="flex flex-col space-y-3">
-        <Skeleton className="h-[600px] w-[600px] rounded-xl" />
-        <div className="space-y-2">
-          <Skeleton className="h-4 w-[400px]" />
-          <Skeleton className="h-4 w-[380px]" />
+      <div className=" flex flex-col space-y-2 overflow-hidden h-screen p-1">
+        <Skeleton className="min-h-16 w-full rounded" />
+        <div className="flex-1 min-h-[1500px] overflow-hidden">
+          <Skeleton className="w-full h-full rounded" />
         </div>
       </div>
     );
