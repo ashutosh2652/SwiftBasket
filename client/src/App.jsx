@@ -16,7 +16,7 @@ import { checkAuth } from "./store/auth-slice/index.js";
 import ShoppingOrderReturn from "./pages/shopping-view/OrderReturn.jsx";
 import PaymentSuccess from "./pages/shopping-view/PaymentSuccess.jsx";
 import SearchProducts from "./pages/shopping-view/search.jsx";
-import UnauthPage from "./pages/unauth-page/Unauth.jsx";
+import UnauthPage from "./pages/unauth_page/unauth.jsx";
 const AdminOrder = lazy(() => import("./pages/admin-view/orders.jsx"));
 const AdminProducts = lazy(() => import("./pages/admin-view/products.jsx"));
 const ShopLayout = lazy(() => import("./components/shopping-view/Layout.jsx"));
@@ -30,8 +30,6 @@ const Login = lazy(() => import("./pages/auth/Login.jsx"));
 const Register = lazy(() => import("./pages/auth/Register.jsx"));
 
 function App() {
-  // console.log("isA!!pp.jsauthenticates", isAuthenticated);
-  // console.log("UserApp.js", user);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuth());
