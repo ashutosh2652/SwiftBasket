@@ -49,7 +49,7 @@ const fetchCartItems = async (req, res) => {
     select: "image title price salesPrice",
   });
   if (!cartItems)
-    return res.status(404).json({ success: false, message: "Cart not Found!" });
+    return res.status(204).json({ success: false, message: "Cart not Found!" });
   const validItems = cartItems.items.filter(
     (productItems) => productItems?.productId
   );

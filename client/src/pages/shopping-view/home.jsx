@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import bannerOne from "../../assets/banner_vector_art.jpg";
-import bannerTwo from "../../assets/black-friday.jpg";
-import bannerThree from "../../assets/browser_stock.jpg";
-import bannerFour from "../../assets/nature.jpg";
 import {
   Airplay,
   BabyIcon,
@@ -30,6 +26,7 @@ import { useNavigate } from "react-router-dom";
 import ProductDetailDialog from "../../components/shopping-view/Product-Details";
 import { toast } from "sonner";
 import { addToCart, fetchCartItems } from "../../store/shop/cart-slice";
+import { getfeatureImages } from "../../store/common";
 
 const categoriesWithIcon = [
   { id: "men", label: "Men", icon: ShirtIcon },
@@ -91,6 +88,7 @@ function ShoppingHome() {
     dispatch(
       fetchFilteredProducts({ selectedFilters: {}, sortBy: "low-to-high" })
     );
+    dispatch(getfeatureImages());
   }, [dispatch]);
   useEffect(() => {
     if (productDetail !== null) setopenDialogBox(true);

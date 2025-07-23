@@ -19,7 +19,7 @@ const Register = () => {
       if (data?.payload?.success) {
         toast.success("LoggedIn Successfully!");
       } else {
-        toast.error(data.payload.message);
+        toast.error(data.error.message);
       }
       console.log("Data", data);
     });
