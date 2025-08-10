@@ -4,7 +4,7 @@ function AuthLayout() {
   return (
     <div className="min-h-screen flex items-center justify-center animate-gradient bg-gradient-to-br from-purple-800 via-indigo-900 to-black ">
       <div className=" bg-black max-w-4xl w-1/2 shadow-xl rounded-lg flex  flex-col md:flex-row overflow-hidden opacity-70">
-        <h2 className="flex justify-center items-center  min-h-[300px] bg-black text-gray-400 font-extrabold size-max text-7xl">
+        <h2 className="flex justify-center items-center flex-wrap  min-h-[300px] bg-black text-gray-400 font-extrabold size-max text-4xl sm:text-2xl md:text-5xl lg:text-7xl">
           WELCOME TO ECOMMERCE WEBSITE
         </h2>
       </div>

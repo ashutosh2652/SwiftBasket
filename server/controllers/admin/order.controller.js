@@ -1,5 +1,4 @@
 import { Order } from "../../models/Orders.models.js";
-import { Products } from "../../models/Products.models.js";
 
 const getAllOrderOfAllUser = async (req, res) => {
   try {

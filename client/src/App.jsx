@@ -40,11 +40,41 @@ function App() {
   );
   if (isLoading)
     return (
-      <div className=" flex flex-col space-y-2 overflow-hidden h-screen p-1">
-        <Skeleton className="min-h-16 w-full rounded" />
-        <div className="flex-1 min-h-[1500px] overflow-hidden">
-          <Skeleton className="w-full h-full rounded" />
-        </div>
+      <div className="animate-pulse bg-gray-600 min-h-screen">
+        <header className="bg-white/60 shadow-md">
+          <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div className="h-8 w-32 bg-gray-400 rounded-md"></div>
+
+            <div className="hidden md:flex items-center space-x-6">
+              <div className="h-5 w-20 bg-gray-400 rounded-md"></div>
+              <div className="h-5 w-20 bg-gray-400 rounded-md"></div>
+              <div className="h-5 w-20 bg-gray-400 rounded-md"></div>
+              <div className="h-5 w-20 bg-gray-400 rounded-md"></div>
+            </div>
+
+            <div className="flex items-center space-x-4">
+              <div className="h-9 w-9 bg-gray-400 rounded-full"></div>
+              <div className="h-9 w-9 bg-gray-400 rounded-full"></div>
+            </div>
+          </nav>
+        </header>
+
+        <main className="container mx-auto px-4 mt-8">
+          <div className="h-[400px] w-full bg-gray-400 rounded-xl shadow-md"></div>
+
+          <section className="py-16">
+            <div className="h-10 w-64 bg-gray-400 rounded-md mx-auto mb-10 shadow-sm"></div>
+
+            <div className="flex justify-center items-center gap-6 flex-wrap">
+              {[...Array(5)].map((_, index) => (
+                <div
+                  key={index}
+                  className="w-50 h-36 bg-gradient-to-br from-gray-400 to-gray-300 rounded-2xl shadow-md"
+                ></div>
+              ))}
+            </div>
+          </section>
+        </main>
       </div>
     );
   return (

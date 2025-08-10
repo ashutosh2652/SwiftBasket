@@ -5,7 +5,7 @@ function CheckAuth({ isAuthenticated, children, user }) {
   const location = useLocation();
   //loading states
   if (isAuthenticated === undefined || user === undefined) {
-    <Loading />;
+    return <Loading />;
   }
   if (location.pathname === "/") {
     if (!isAuthenticated) <Navigate to="/auth/login" replace />;
